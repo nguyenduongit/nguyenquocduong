@@ -1,5 +1,6 @@
+// src/app/api/auth/login/route.ts
 import {NextResponse} from "next/server";
-import {cookies} from "next/headers"; // Đảm bảo import từ 'next/headers'
+import {cookies} from "next/headers"; // Vẫn cần để đọc cookie nếu cần, nhưng không bắt buộc cho việc set
 
 const AUTH_COOKIE_NAME = "personal-hub-auth";
 const APP_PASSWORD = process.env.APP_PASSWORD;
@@ -14,16 +15,18 @@ export async function POST(request: Request) {
 		const {password} = await request.json();
 
 		if (password === APP_PASSWORD) {
-			// Mật khẩu đúng, set cookie.
-			// Cú pháp này là đúng cho Route Handlers trong App Router.
-			cookies().set(AUTH_COOKIE_NAME, "true", {
+			// Mật khẩu đúng, tạo response và set cookie trên đó
+			const response = NextResponse.json({message: "Đăng nhập thành công."}, {status: 200});
+
+			response.cookies.set(AUTH_COOKIE_NAME, "true", {
 				httpOnly: true,
 				secure: process.env.NODE_ENV === "production",
 				sameSite: "strict",
 				path: "/",
 				maxAge: 60 * 60 * 24 * 30, // 30 ngày
 			});
-			return NextResponse.json({message: "Đăng nhập thành công."}, {status: 200});
+
+			return response; // Trả về response đã được set cookie
 		} else {
 			// Mật khẩu sai
 			return NextResponse.json({message: "Mật khẩu không chính xác."}, {status: 401});
