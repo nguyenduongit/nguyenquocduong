@@ -1,0 +1,183 @@
+.container {
+	max-width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 2rem;
+}
+
+.tabNavigationWrapper {
+	background-color: rgba(0, 128, 90, 0.711);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+.tabNavigationWrapper .container {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.section {
+	margin-top: 1rem;
+}
+
+.searchSectionWrapper {
+	margin-bottom: 1.5rem;
+	max-width: 42rem;
+	margin-left: auto;
+	margin-right: auto;
+	/* Bỏ margin-top âm */
+}
+
+.sitesSection {
+	/* margin-top: 1.5rem; */
+}
+
+.sitesGrid {
+	display: grid;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	gap: 1.25rem;
+}
+
+.fab {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 9999px;
+	background-color: var(--primary);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.2s, transform 0.2s;
+	z-index: 10;
+}
+
+.fab:hover {
+	background-color: var(--primary-hover);
+	transform: scale(1.05);
+}
+
+/* === CSS CẬP NHẬT === */
+.editLayoutActions {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.6);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	/* Điều chỉnh margin */
+	margin-top: -1rem; /* Kéo lên giống search bar cũ */
+	margin-bottom: 1.5rem; /* Tạo khoảng cách với search bar bên dưới */
+}
+
+.editLayoutText {
+	color: #1f2937;
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+.actionButton {
+	padding: 0.5rem 1rem;
+	border-radius: 0.375rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s, opacity 0.2s;
+	font-weight: 500;
+	margin-left: 0.75rem;
+}
+.actionButton:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.cancelButton {
+	background-color: var(--neutral-bg);
+	color: var(--neutral-text);
+}
+
+.cancelButton:hover {
+	background-color: var(--neutral-bg-hover);
+}
+
+.saveButton {
+	background-color: var(--primary);
+	color: #ffffff;
+}
+
+.saveButton:hover {
+	background-color: var(--primary-hover);
+}
+
+@media (min-width: 640px) {
+	.sitesGrid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+@media (min-width: 768px) {
+	.sitesGrid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+@media (min-width: 1024px) {
+	.sitesGrid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.emptyState {
+	text-align: center;
+	padding: 2.5rem;
+	border-radius: 0.75rem;
+	margin-top: 1rem;
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.emptyStateText {
+	color: #374151;
+	font-weight: 500;
+}
+
+.loading,
+.error {
+	text-align: center;
+	padding: 2.5rem;
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: white;
+}
+
+.error {
+	background-color: rgba(239, 68, 68, 0.7);
+	border-radius: 0.5rem;
+}
+
+.dragging {
+	opacity: 0.5;
+}
+
+.dragOver {
+	border-color: var(--primary) !important;
+	border-style: solid !important;
+	box-shadow: 0 0 0 2px var(--primary) !important;
+}
+
+.searchResultsTitle {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+	color: white;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}

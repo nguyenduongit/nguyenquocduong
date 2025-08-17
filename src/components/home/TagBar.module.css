@@ -1,0 +1,111 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	position: relative; /* Cần thiết cho context menu */
+	margin-bottom: 1.5rem; /* Khoảng cách dưới cùng */
+}
+
+.tagGroup {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* === CSS MỚI CHO CHẾ ĐỘ SẮP XẾP === */
+.tagGroup.editMode .tagButton,
+.tagGroup.editMode .addButton {
+	cursor: grab;
+	pointer-events: none; /* Vô hiệu hóa click khi sắp xếp */
+}
+.tagGroup.editMode .tagButton {
+	pointer-events: auto; /* Cho phép drag */
+}
+
+.tagGroup.editMode .tagButton:active {
+	cursor: grabbing;
+}
+
+.tagButton.dragging {
+	opacity: 0.5;
+}
+
+.tagButton.dragOver {
+	box-shadow: 0 0 0 2px var(--primary);
+}
+/* ==================================== */
+
+.tagButton {
+	padding: 0.25rem 0.75rem;
+	font-size: 0.875rem;
+	border-radius: 9999px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s, box-shadow 0.2s; /* Thêm transition */
+}
+
+.active {
+	background-color: var(--primary);
+	color: #ffffff;
+}
+
+.inactive {
+	background-color: var(--neutral-bg);
+	color: var(--neutral-text);
+}
+
+.inactive:hover {
+	background-color: var(--neutral-bg-hover);
+}
+
+.addButton {
+	padding: 0.25rem 0.75rem;
+	font-size: 0.875rem;
+	border-radius: 9999px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.addButton:hover {
+	background-color: var(--neutral-bg);
+	border-color: #9ca3af;
+}
+
+.contextMenu {
+	position: fixed;
+	z-index: 1000;
+	background-color: white;
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	border: 1px solid var(--card-border);
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	min-width: 150px;
+}
+
+.menuItem {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--neutral-text);
+}
+
+.menuItem:hover {
+	background-color: var(--neutral-bg-light);
+}
+
+.menuItem.delete {
+	color: var(--danger);
+}
+
+.menuItem.delete:hover {
+	background-color: var(--danger-hover-bg);
+}

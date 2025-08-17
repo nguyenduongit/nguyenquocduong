@@ -1,0 +1,75 @@
+.container {
+	position: relative;
+	display: flex;
+	width: 100%;
+	border-radius: 0.5rem; /* Bo góc lớn hơn */
+	transition: border-color 0.2s, box-shadow 0.2s;
+	overflow: hidden;
+
+	/* === HIỆU ỨNG GLASSMORPHISM === */
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.6);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	/* ============================== */
+}
+
+.container:focus-within {
+	box-shadow: 0 0 0 2px rgba(37, 235, 195, 0.886); /* Tạo shadow mềm mại hơn */
+}
+
+.iconWrapper {
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	padding-left: 0.75rem;
+	z-index: 1;
+}
+
+.icon {
+	height: 1.25rem;
+	width: 1.25rem;
+	color: #6b7280; /* Màu icon tối hơn một chút */
+}
+
+.input {
+	border: none;
+	outline: none;
+	box-shadow: none;
+	border-radius: 0;
+	display: block;
+	width: 100%;
+	padding-left: 2.5rem;
+	font-size: 0.875rem;
+	padding-top: 0.75rem; /* Tăng padding */
+	padding-bottom: 0.75rem;
+	background-color: transparent;
+	color: var(--foreground);
+}
+
+.input::placeholder {
+	color: #6b7280;
+}
+
+.button {
+	border-radius: 0;
+	border: none;
+	border-left: 1px solid var(--neutral-border);
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	background-color: rgba(243, 244, 246, 0.7); /* Màu nền nút mờ */
+	transition: background-color 0.2s, border-color 0.2s;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--neutral-text);
+	flex-shrink: 0;
+}
+
+.button:hover {
+	background-color: rgba(229, 231, 235, 0.8);
+}

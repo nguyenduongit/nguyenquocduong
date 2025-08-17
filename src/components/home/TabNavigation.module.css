@@ -1,0 +1,129 @@
+.container {
+	/* Dòng border-bottom đã được xóa */
+}
+
+.flexContainer {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.nav {
+	flex-grow: 1;
+	display: flex;
+	gap: 2rem;
+}
+
+.tabItem {
+	position: relative;
+	display: flex;
+	align-items: center;
+	transition: transform 0.2s ease-in-out;
+}
+.nav.editMode .tabItem {
+	cursor: grab;
+}
+
+.nav.editMode .tabItem:active {
+	cursor: grabbing;
+}
+.tabItem.dragging {
+	opacity: 0.5;
+}
+.tabItem.dragOver {
+	border-left: 2px solid var(--primary);
+}
+
+.tabButton {
+	white-space: nowrap;
+	padding: 1rem 0.25rem;
+	border-bottom: 2px solid transparent;
+	font-weight: 600;
+	font-size: 0.9rem;
+	background: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	cursor: pointer;
+	color: rgba(0, 0, 0, 0.7);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+	transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+	color: white;
+	border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.tabButton.active {
+	border-bottom-color: white;
+	color: white;
+}
+
+/* === CSS CẬP NHẬT CHO NÚT ICON === */
+.modifyButton {
+	/* Kích thước và bo tròn */
+	width: 40px;
+	height: 40px;
+	border-radius: 9999px; /* Bo tròn hoàn toàn */
+
+	/* Căn giữa icon */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	/* Giao diện */
+	border: 1px solid transparent;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: white;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.modifyButton:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modifyButton.active {
+	background-color: var(--primary);
+	color: white;
+	border-color: var(--primary);
+}
+/* ==================================== */
+
+.contextMenu {
+	position: fixed;
+	z-index: 1000;
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	min-width: 150px;
+}
+
+.menuItem {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--neutral-text);
+}
+
+.menuItem:hover {
+	background-color: var(--neutral-bg-light);
+}
+
+.menuItem.delete {
+	color: var(--danger);
+}
+
+.menuItem.delete:hover {
+	background-color: var(--danger-hover-bg);
+}

@@ -1,0 +1,132 @@
+/* -- TOÀN BỘ FILE ĐÃ ĐƯỢC CẬP NHẬT -- */
+.card {
+	/* === HIỆU ỨNG GLASSMORPHISM === */
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(255, 255, 255, 0.65);
+	border: 1px solid var(--card-border);
+	/* ============================== */
+
+	border-radius: 0.75rem; /* Tăng bo góc */
+	padding: 1rem;
+	box-shadow: var(--card-shadow);
+	transition: all 0.2s ease-in-out;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card:not(.editMode) {
+	cursor: pointer;
+}
+
+.card:hover {
+	box-shadow: var(--card-shadow-hover);
+	border-color: var(--card-border-hover);
+	transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+	background-color: rgba(255, 255, 255, 0.75);
+}
+
+.card.editMode {
+	cursor: grab;
+	border-style: dashed;
+	border-color: #9ca3af;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.card.editMode:active {
+	cursor: grabbing;
+}
+.card.dragging {
+	opacity: 0.5;
+	transform: scale(0.95);
+	border-style: solid;
+	background-color: var(--neutral-bg-light);
+}
+.card.drag-over {
+	border-color: var(--primary);
+	border-style: solid;
+	box-shadow: 0 0 0 2px var(--primary);
+}
+
+.link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.link:hover .title {
+	color: var(--primary);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.favicon {
+	width: 1.5rem;
+	height: 1.5rem;
+	object-fit: contain;
+	flex-shrink: 0;
+}
+
+.title {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #1f2937;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.description {
+	margin-top: 0.5rem;
+	font-size: 0.875rem;
+	color: #4b5563;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	line-height: 1.4;
+	flex-grow: 1;
+}
+
+.contextMenu {
+	position: fixed;
+	z-index: 1000;
+	/* Glassmorphism cho context menu */
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	min-width: 150px;
+}
+
+.menuItem {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--neutral-text);
+}
+
+.menuItem:hover {
+	background-color: var(--neutral-bg-light);
+}
+
+.menuItem.delete {
+	color: var(--danger);
+}
+
+.menuItem.delete:hover {
+	background-color: var(--danger-hover-bg);
+}

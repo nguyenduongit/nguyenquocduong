@@ -1,0 +1,83 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	/* Nền được thừa hưởng từ body */
+}
+
+.card {
+	padding: 2.5rem; /* Tăng padding */
+	border-radius: 1rem; /* Tăng bo góc */
+	width: 100%;
+	max-width: 24rem;
+
+	/* === HIỆU ỨNG GLASSMORPHISM === */
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(255, 255, 255, 0.65);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	/* ============================== */
+}
+
+.title {
+	font-size: 1.75rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+	text-align: center;
+	color: #1f2937;
+}
+
+.formGroup {
+	margin-bottom: 1.5rem;
+}
+
+.label {
+	display: block;
+	color: var(--neutral-text);
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+}
+
+.input {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--neutral-border);
+	border-radius: 0.5rem;
+	background-color: rgba(255, 255, 255, 0.5); /* Nền input mờ */
+}
+
+.input:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+	border-color: var(--primary);
+}
+
+.error {
+	color: var(--danger);
+	font-size: 0.875rem;
+	margin-bottom: 1rem;
+	background-color: rgba(254, 242, 242, 0.8);
+	padding: 0.5rem;
+	border-radius: 0.375rem;
+	text-align: center;
+}
+
+.button {
+	width: 100%;
+	background-color: var(--primary);
+	color: #ffffff;
+	padding: 0.75rem;
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.button:hover {
+	background-color: var(--primary-hover);
+	transform: scale(1.02);
+}
