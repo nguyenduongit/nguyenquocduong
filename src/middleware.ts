@@ -8,25 +8,21 @@ const AUTH_COOKIE_NAME = "personal-hub-auth";
 export function middleware(request: NextRequest) {
 	const {pathname} = request.nextUrl;
 	const cookie = request.cookies.get(AUTH_COOKIE_NAME);
-	const isAuthenticated = !!cookie;
 
-	const isAccessingLoginPage = pathname === "/login";
-	const isAccessingProtectedRoute = PROTECTED_ROUTES.some((p) => pathname.startsWith(p));
-
-	// Nếu đã đăng nhập và truy cập trang login, chuyển hướng về trang chủ
-	if (isAuthenticated && isAccessingLoginPage) {
+	// Nếu đã đăng nhập và đang ở trang /login, chuyển về trang chủ
+	if (cookie && pathname === "/login") {
 		return NextResponse.redirect(new URL("/", request.url));
 	}
 
-	// Nếu chưa đăng nhập và đang truy cập một trang cần bảo vệ, chuyển hướng đến trang login
-	// Điều kiện isAccessingLoginPage === false để tránh vòng lặp
-	if (!isAuthenticated && !isAccessingLoginPage && isAccessingProtectedRoute) {
+	// Nếu chưa đăng nhập VÀ trang đang truy cập KHÔNG PHẢI là /login VÀ nó là một trang được bảo vệ
+	if (!cookie && pathname !== "/login" && PROTECTED_ROUTES.some((p) => pathname.startsWith(p))) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
 	return NextResponse.next();
 }
 
+// Giữ nguyên config matcher
 export const config = {
 	matcher: ["/", "/login", "/notes/:path*"],
 };
